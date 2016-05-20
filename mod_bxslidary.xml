@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="module" version="3" client="site" method="upgrade">
+	<name>mod_bxslidary</name>
+	<author>Gruz</author>
+	<creationDate>2016-05-20</creationDate>
+	<copyright>Copyright (C) 2004-2016 Gruz All rights reserved.</copyright>
+	<license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+	<authorEmail>arygroup@gmail.com</authorEmail>
+	<authorUrl>http://gruz.org.ua/en/extensions/bxslidary.html</authorUrl>
+	<version>0.0.1</version>
+	<description>MOD_BXSLIDARY_DESCRIPTION</description>
+
+	<files>
+
+
+
+
+
+
+
+
+
+
+	<folder>css</folder><folder>extensions</folder><folder>helpers</folder><folder>images</folder><folder>js</folder><folder>language</folder><folder>models</folder><folder>tmpl</folder><filename>README.md</filename><filename>helper.php</filename><filename>index.html</filename><filename module="mod_bxslidary">mod_bxslidary.php</filename></files>
+
+
+	<config>
+		<fields name="params" addfieldpath="/modules/mod_bxslidary/models/fields">
+			<fieldset name="basic">
+
+				<field name="category_id" type="phocagallerycategory" multiple="multiple" default="" label="MOD_BXSLIDARY_CATEGORY_ID_LABEL" description="MOD_BXSLIDARY_CATEGORY_ID_DESC"/>
+
+
+				<field name="count_images" type="text" default="5" label="MOD_BXSLIDARY_COUNT_IMAGES_LABEL" description="MOD_BXSLIDARY_COUNT_IMAGES_DESC"/>
+				<!--
+				<field name="width" type="text" default="970" label="MOD_BXSLIDARY_WIDTH_LABEL" description="MOD_BXSLIDARY_WIDTH_DESC" />
+
+				<field name="height" type="text" default="230" label="MOD_BXSLIDARY_HEIGHT_LABEL" description="MOD_BXSLIDARY_HEIGHT_DESC" />
+				-->
+				<field name="image_ordering" type="list" default="1" label="MOD_BXSLIDARY_ORDERING_LABEL" description="MOD_BXSLIDARY_ORDERING_DESC">
+					<option value="1">MOD_BXSLIDARY_ORDERING_ASC</option>
+					<option value="2">MOD_BXSLIDARY_ORDERING_DESC</option>
+					<option value="3">MOD_BXSLIDARY_TITLE_ASC</option>
+					<option value="4">MOD_BXSLIDARY_TITLE_DESC</option>
+					<option value="5">MOD_BXSLIDARY_DATE_ASC</option>
+					<option value="6">MOD_BXSLIDARY_DATE_DESC</option>
+					<option value="7">MOD_BXSLIDARY_ID_ASC</option>
+					<option value="8">MOD_BXSLIDARY_ID_DESC</option>
+					<option value="9">MOD_BXSLIDARY_RANDOM</option>
+					<option value="11">MOD_BXSLIDARY_COUNT_ASC</option>
+					<option value="12">MOD_BXSLIDARY_COUNT_DESC</option>
+					<option value="13">MOD_BXSLIDARY_AVERAGE_ASC</option>
+					<option value="14">MOD_BXSLIDARY_AVERAGE_DESC</option>
+					<option value="15">MOD_BXSLIDARY_HITS_ASC</option>
+					<option value="16">MOD_BXSLIDARY_HITS_DESC</option>
+				</field>
+
+				<field name="slideshow_params" type="textarea" default="auto: true, pager: false, speed: 1500, controls: false,  easing: 'easeInBounce'" label="MOD_BXSLIDARY_SLIDESHOW_PARAMETERS_LABEL" description="MOD_BXSLIDARY_SLIDESHOW_PARAMETERS_DESC"/>
+
+				<field name="load_bxslider_css" type="list" default="1" label="MOD_BXSLIDARY_LOAD_BXSLIDER_CSS_LABEL" description="MOD_BXSLIDARY_LOAD_BXSLIDER_CSS_DESC">
+					<option value="1">MOD_BXSLIDARY_YES</option>
+					<option value="0">MOD_BXSLIDARY_NO</option>
+				</field>
+
+<!--
+				<field name="use_ajax" type="list" default="no" label="MOD_BXSLIDARY_SHOW_JOOMLA_TOOLTIP_LABEL" description="MOD_BXSLIDARY_SHOW_JOOMLA_TOOLTIP_DESC">
+					<option value="no">JNO</option>
+					<option value="button">JBUTTON</option>
+					<option value="next_slide">JBUTTON</option>
+				</field>
+
+-->
+				<field name="spacer2" type="spacer" hr="true"/>
+
+				<field name="url_link" type="list" default="0" label="MOD_BXSLIDARY_URL_LINK_LABEL" description="MOD_BXSLIDARY_URL_LINK_DESC">
+					<option value="0">MOD_BXSLIDARY_NO_LINK</option>
+					<option value="1">MOD_BXSLIDARY_EXTERNAL_LINK1</option>
+					<option value="2">MOD_BXSLIDARY_EXTERNAL_LINK2</option>
+					<option value="3">MOD_BXSLIDARY_URL_PHOCAGALLERY_CATEGORY_LINK</option>
+					<option value="4">MOD_BXSLIDARY_URL_PHOCAPHOTO_CATEGORY_LINK</option>
+					<option value="5">MOD_BXSLIDARY_URL_PHOCAGALLERY_IMAGE_LINK</option>
+					<option value="6">MOD_BXSLIDARY_URL_PHOCAPHOTO_IMAGE_LINK</option>
+					<option value="10">MOD_BXSLIDARY_SINGLE_LINK</option>
+				</field>
+
+				<field name="target" type="list" class="inputbox" label="MOD_BXSLIDARY_TARGET_LINK_LABEL" description="MOD_BXSLIDARY_TARGET_LINK_DESC" default="_self">
+					<option value="_self">MOD_BXSLIDARY_OPEN_WINDOW_SELF</option>
+					<option value="_blank">MOD_BXSLIDARY_OPEN_WINDOW_BLANK</option>
+					<option value="_parent">MOD_BXSLIDARY_OPEN_WINDOW_PARENT</option>
+					<option value="_top">MOD_BXSLIDARY_OPEN_WINDOW_TOP</option>
+				</field>
+
+				<field name="single_link" type="text" default="" label="MOD_BXSLIDARY_SINGLE_LINK_LABEL" description="MOD_BXSLIDARY_SINGLE_LINK_DESC"/>
+
+
+
+
+				<field name="slideshow_image_source" type="list" default="large" label="MOD_BXSLIDARY_IMAGE_SOURCE_LABEL" description="MOD_BXSLIDARY_IMAGE_SOURCE_DESC">
+					<option value="large">MOD_BXSLIDARY_LARGE</option>
+					<option value="medium">MOD_BXSLIDARY_MEDIUM</option>
+					<option value="small">MOD_BXSLIDARY_SMALL</option>
+
+				</field>
+
+				<field name="thumbnails_image_source" type="list" default="small" label="MOD_BXSLIDARY_THUMBNAIL_IMAGE_SOURCE_LABEL" description="MOD_BXSLIDARY_THUMBNAIL_IMAGE_SOURCE_DESC">
+					<option value="large">MOD_BXSLIDARY_LARGE</option>
+					<option value="medium">MOD_BXSLIDARY_MEDIUM</option>
+					<option value="small">MOD_BXSLIDARY_SMALL</option>
+				</field>
+
+
+				<field name="spacer3" type="spacer" hr="true"/>
+<!--
+				<field name="note_description_ajax" type="note" label="MOD_BXSLIDARY_FIELD_AJAX" />
+
+-->
+				<field name="ajax_buttons" type="list" default="disabled" multiple="multiple" label="MOD_BXSLIDARY_FIELD_AJAX" description="MOD_BXSLIDARY_FIELD_AJAX_DESC">
+					<option value="disabled">JDISABLED</option>
+					<option value="load_next_reload">MOD_BXSLIDARY_FIELD_AJAX_LOAD_NEXT_X_IMAGES</option>
+					<option value="load_next_slides">MOD_BXSLIDARY_FIELD_AJAX_LAST_SLIDE_LOAD</option>
+				</field>
+			  <field name="ajax_remove_on_append" type="radio" default="1" label="MOD_BXSLIDARY_AJAX_REMOVE_APPEND" description="MOD_BXSLIDARY_AJAX_REMOVE_APPEND_DESC" class="btn-group btn-group-yesno" showon="ajax_buttons:load_next_reload,load_next_slides">
+				 <option value="1">JYes</option>
+				 <option value="0">JNo</option>
+			  </field>
+			  <field name="show_all_images_loaded_message" type="radio" default="1" label="MOD_BXSLIDARY_SHOW_ALL_IMAGES_LOADED_MESSAGE" class="btn-group btn-group-yesno" showon="ajax_buttons:load_next_reload,load_next_slides">
+				 <option value="1">JYes</option>
+				 <option value="0">JNo</option>
+			  </field>
+
+				<field name="spacer4" type="spacer" hr="true"/>
+				<field name="note_description_trimtext" type="note" label="MOD_BXSLIDARY_FIELD_DESCRIPTIOM_TRIM" description="MOD_BXSLIDARY_FIELD_DESCRIPTIOM_TRIM_DESC"/>
+
+			  <field name="Strip_Formatting" type="radio" default="0" label="MOD_BXSLIDARY_STRIP_FORMATTING_LABEL" class="btn-group btn-group-yesno">
+				 <option value="1">JYes</option>
+				 <option value="0">JNo</option>
+			  </field>
+
+			  <field name="limittype" type="list" default="-1" label="MOD_BXSLIDARY_LIMITTYPE_LABEL" description="">
+				 <option value="-1">JNO</option>
+				 <option value="0">MOD_BXSLIDARY_LIMITTYPE_OPTION_CHARS</option>
+				 <option value="1">MOD_BXSLIDARY_LIMITTYPE_OPTION_WORDS</option>
+				 <option value="2">MOD_BXSLIDARY_LIMITTYPE_OPTION_PARAGRAPHS</option>
+			  </field>
+
+			  <field name="maxLimit" type="text" default="750" label="MOD_BXSLIDARY_MAXLIMIT_LABEL" description="MOD_BXSLIDARY_MAXLIMIT_DESC" showon="limittype:0,1,2"/>
+
+			  <field name="add_trimming_dots" showon="limittype:0,1,2" type="list" default="0" label="MOD_BXSLIDARY_FIELD_ADD_TRIMMING_DOTS" description="MOD_BXSLIDARY_FIELD_ADD_TRIMMING_DOTS_DESC">
+						<option value="0">JNo</option>
+						<option value="1">JYes</option>
+						<option value="2">MOD_BXSLIDARY_FIELD_ADD_TRIMMING_DOTS_WHEN_NEEDED</option>
+			  </field>
+
+				<field name="trimming_dots" showon="limittype:0,1,2" type="text" default="..." label="MOD_BXSLIDARY_TRIMMING_TEXT" description="" filter="raw"/>
+
+
+
+
+			<field name="debug spacer" type="spacer" hr="true"/>
+			<field name="debug" type="radio" default="0" label="Debug" class="btn-group btn-group-yesno">
+				 <option value="1">JYes</option>
+				 <option value="0">JNo</option>
+			  </field>
+			</fieldset>
+
+
+			<fieldset name="advanced">
+				<field name="class_sfx" type="text" label="COM_MODULES_FIELD_MODULECLASS_SFX_LABEL" description="COM_MODULES_FIELD_MODULECLASS_SFX_DESC"/>
+
+				<field name="cache" type="list" default="1" label="COM_MODULES_FIELD_CACHING_LABEL" description="COM_MODULES_FIELD_CACHING_DESC">
+					<option value="1">JGLOBAL_USE_GLOBAL</option>
+					<option value="0">COM_MODULES_FIELD_VALUE_NOCACHING</option>
+				</field>
+				<field name="cache_time" type="text" default="900" label="COM_MODULES_FIELD_CACHE_TIME_LABEL" description="COM_MODULES_FIELD_CACHE_TIME_DESC"/>
+				<field name="cachemode" type="hidden" default="static">
+					<option value="static"/>
+				</field>
+			</fieldset>
+		</fields>
+	</config>
+<updateservers><servers type="extension" priority="1" name="bxslidary">http://gruz.org.ua/index.php?option=com_ars&amp;view=update&amp;task=stream&amp;format=xml&amp;id=20&amp;dummy=extension.xml</servers></updateservers></extension>
