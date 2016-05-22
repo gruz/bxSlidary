@@ -28,71 +28,64 @@ function pgBXJQModule ($) {
 		}
 
 		if(jQuery.inArray('load_next_slides',options.moduleParams.ajax_buttons) !== -1) {
-			var loadNextItemsTODEL = function (e){
-				var countOfSlides = $(baseSelector).find(' .bx-pager .bx-pager-item').length;
-				self.removeItems(options.moduleParams.nextload_count_images);
 
-				options.moduleParams.count_images = options.moduleParams.nextload_count_images;
-				$.when( self.loadItems() ).done( function() {
-					$.when( self.appendItems() ).done( function() {
-						items = {};
-						options.sliderParams.startSlide = countOfSlides-2;
-//~ console.log (options.sliderParams.startSlide,'options.sliderParams.startSlide');
-						$.when( slider.reloadSlider(options.sliderParams) ).done( function() {
-							slider.goToNextSlide();
-							$('.moduleid_'+options.moduleId+' .bx-controls-direction .bx-next').unbind ('click.loadNextItems');
-						});
-						options.sliderParams.startSlide = 0;
-					});
-				});
-			}
+			/*
+			 * Function to be loaded when last slide Next button is clicked
+			 *
+			 *
+			 */
+			options.moduleParams.nextload_count_images = options.moduleParams.count_images;
 			var loadNextItems = function (e){
+				e.stopPropagation();
+				// Prepare some values
 				var countOfSlides = $(baseSelector).find(' .bx-pager .bx-pager-item').length;
-				options.sliderParams.startSlide = countOfSlides-2;
-//~ console.log('startSlide',options.sliderParams.startSlide);
-				self.removeItems(options.moduleParams.nextload_count_images);
 				options.moduleParams.count_images = options.moduleParams.nextload_count_images; // set to load all images number, as set up in the module settings
+//~ console.log ('reload fired','count images'+options.moduleParams.count_images);
 
-				sliderReloadedCaller = $(this);
+
+				sliderReloadedCaller = $(this); // Prepare to block "next" button while reloading
 				$.when( self.loadItems() ).done( function() {
+//~ console.log ('loaded',items);
+					self.removeItems(options.moduleParams.nextload_count_images);
 					$.when( self.appendItems() ).done( function() {
-						$.when( slider.reloadSlider(options.sliderParams) ).done( function() {
-							slider.goToNextSlide();
-							$('.moduleid_'+options.moduleId+' .bx-controls-direction .bx-next').unbind ('click.loadNextItems');
+						options.sliderParams.startSlide = countOfSlides-1;
+//~ console.log('loadNextItems: startSlide',options.sliderParams.startSlide);
+
+						$.when( slider.reloadSlider(options.sliderParams)).done( function(w) {
+//~ console.log ('Load finished',slider);
+							//slider.goToNextSlide();
+							//$('.moduleid_'+options.moduleId+' .bx-controls-direction .bx-next').unbind ('click.loadNextItems');
+							//$('.moduleid_'+options.moduleId+' .bx-controls-direction .bx-next').click(loadNextItems);
+							$('.moduleid_'+options.moduleId+' .bx-controls-direction').append('<i class="fa fa-rotate-right fa-special-css"></i>');
+							$('.moduleid_'+options.moduleId+' .fa-special-css').click(loadNextItems);
+							//slider.goToNextSlide();
 							options.sliderParams.startSlide = 0;
 						});
 					});
 				});
 			}
 
-			options.moduleParams.nextload_count_images = options.moduleParams.count_images;
+			/*
+			 * Before slide is loaded
+			 * */
 			options.sliderParams.onSlideBefore = function() {
 				var countOfSlides = $(baseSelector).find(' .bx-pager .bx-pager-item').length;
+//~ console.log ('countOfSlides',countOfSlides);
 				var currentSlide = this.getCurrentSlide();
 				if (countOfSlides-1 == currentSlide) { // If is last slide
 					options.moduleParams.isLast = true;
+					$('.moduleid_'+options.moduleId+' .bx-controls-direction').append('<i class="fa fa-rotate-right fa-special-css"></i>');
+					$('.moduleid_'+options.moduleId+' .fa-special-css').click(loadNextItems);
+					//$('.moduleid_'+options.moduleId+' .bx-controls-direction .bx-next').click(loadNextItems);
 				}
 				else { // If is NOT last slide
 					options.moduleParams.isLast = false;
-					$('.moduleid_'+options.moduleId+' .bx-controls-direction i.fa').remove();
-					$('.moduleid_'+options.moduleId+' .bx-controls-direction .bx-next').unbind ('click.loadNextItems');
+					$('.moduleid_'+options.moduleId+' .bx-controls-direction .fa-special-css').remove();
+//~ console.log ('unbind in onSlideBefore');
+					//$('.moduleid_'+options.moduleId+' .bx-controls-direction .bx-next').click(originalClick);
 				}
 				return true;
 			}
-			options.sliderParams.onSlideAfter = function() {
-				var currentSlide = this.getCurrentSlide();
-				if (options.moduleParams.isLast) { // If is last slide
-					//~ if (typeof(items) === 'undefined' || Object.keys(items).length == 0) {
-						//~ options.moduleParams.count_images = options.moduleParams.nextload_count_images;
-						//~ self.loadItems();
-					//~ }
-					$('.moduleid_'+options.moduleId+' .bx-controls-direction .bx-next').unbind ('click.loadNextItems');
-					$('.moduleid_'+options.moduleId+' .bx-controls-direction').append('<i class="fa fa-rotate-right fa-special-css"></i>');
-					$('.moduleid_'+options.moduleId+' .bx-controls-direction .bx-next').bind('click.loadNextItems',loadNextItems);
-				}
-				return true;
-			};
-
 		}
 
 		var slider = $('.moduleid_'+options.moduleId+' .pgbx-bxslider').show().bxSlider(options.sliderParams);

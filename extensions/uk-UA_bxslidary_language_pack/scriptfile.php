@@ -11,7 +11,7 @@ defined('_JEXEC') or die('Restricted access');
  * Script file
  */
 
-class en_GB_bxslidary_language_packInstallerScript {
+class uk_UA_bxslidary_language_packInstallerScript {
 	function __construct() {
 	}
 	/**

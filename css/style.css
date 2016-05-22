@@ -60,4 +60,6 @@ ul.bxslider blockquote{
     position: absolute;
     right: 5px;
     top: 50%;
+    z-index:10000;
+    cursor:pointer;
 }

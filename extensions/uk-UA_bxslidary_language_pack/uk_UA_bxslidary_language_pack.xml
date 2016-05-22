@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <extension version="2.5" type="file" method="upgrade">
-  <name>en_GB_bxslidary_language_pack</name>
+  <name>uk_UA_bxslidary_language_pack</name>
   <version>2016-05-22 23:22</version>
   <creationDate>2016-05-22 23:22</creationDate>
   <author>AryGroup</author>
@@ -8,15 +8,15 @@
   <authorUrl>http://arygroup.ga</authorUrl>
   <copyright>Copyright (C) 2004-2016 Gruz. All rights reserved.</copyright>
   <license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
-  <description>en-GB bxSlider module language pack</description>
+  <description>uk-UA bxSlider module language pack</description>
   <scriptfile>scriptfile.php</scriptfile>
   <fileset>
-    <files target="modules/mod_bxslidary/language/en-GB" folder="modules/mod_bxslidary/language/en-GB">
-      <file>en-GB.mod_bxslidary.ini</file>
-      <file>en-GB.mod_bxslidary.sys.ini</file>
+    <files target="modules/mod_bxslidary/language/uk-UA" folder="modules/mod_bxslidary/language/uk-UA">
+      <file>uk-UA.mod_bxslidary.ini</file>
+      <file>uk-UA.mod_bxslidary.sys.ini</file>
     </files>
   </fileset>
   <updateservers>
-    <server type="extension" priority="1" name="en_GB_bxslidary_language_pack">http://gruz.org.ua/images/stories/files/bxslidary/update_en-GB.xml</server>
+    <server type="extension" priority="1" name="uk_UA_bxslidary_language_pack">http://gruz.org.ua/images/stories/files/bxslidary/update_uk-UA.xml</server>
   </updateservers>
 </extension>
