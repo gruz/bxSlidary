@@ -42,7 +42,7 @@ function pgBXJQModule ($) {
 				options.moduleParams.count_images = options.moduleParams.nextload_count_images; // set to load all images number, as set up in the module settings
 //~ console.log ('reload fired','count images'+options.moduleParams.count_images);
 
-
+				self.blockElement(this);
 				sliderReloadedCaller = $(this); // Prepare to block "next" button while reloading
 				$.when( self.loadItems() ).done( function() {
 //~ console.log ('loaded',items);
@@ -52,17 +52,22 @@ function pgBXJQModule ($) {
 							var title = $(this).attr('data-original-title');
 							$(this).attr('title',title);
 						});
-						options.sliderParams.startSlide = countOfSlides-1;
+						options.sliderParams.startSlide = countOfSlides-2;
 //~ console.log('loadNextItems: startSlide',options.sliderParams.startSlide);
 
 						$.when( slider.reloadSlider(options.sliderParams)).done( function(w) {
 //~ console.log ('Load finished',slider);
-							//slider.goToNextSlide();
 							//$('.moduleid_'+options.moduleId+' .bx-controls-direction .bx-next').unbind ('click.loadNextItems');
 							//$('.moduleid_'+options.moduleId+' .bx-controls-direction .bx-next').click(loadNextItems);
 							$('.moduleid_'+options.moduleId+' .bx-controls-direction').append('<i class="fa fa-rotate-right fa-special-css"></i>');
 							$('.moduleid_'+options.moduleId+' .fa-special-css').click(loadNextItems);
-							//slider.goToNextSlide();
+//alert();
+							setTimeout(
+							  function()
+							  {
+								 slider.goToNextSlide();
+							  }, 100);
+
 							options.sliderParams.startSlide = 0;
 						});
 					});

@@ -7,7 +7,7 @@
   <license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
   <authorEmail>arygroup@gmail.com</authorEmail>
   <authorUrl>http://gruz.org.ua/en/extensions/bxslidary.html</authorUrl>
-  <version>0.0.4</version>
+  <version>0.0.6</version>
   <description>MOD_BXSLIDARY_DESCRIPTION</description>
   <files>
     <folder>css</folder>
@@ -22,6 +22,7 @@
     <filename>helper.php</filename>
     <filename>index.html</filename>
     <filename module="mod_bxslidary">mod_bxslidary.php</filename>
+    <filename>scriptfile.php</filename>
   </files>
   <config>
     <fields name="params" addfieldpath="/modules/mod_bxslidary/models/fields">
@@ -146,6 +147,7 @@
       </fieldset>
     </fields>
   </config>
+  <scriptfile>scriptfile.php</scriptfile>
   <updateservers>
     <servers type="extension" priority="1" name="bxslidary">http://gruz.org.ua/index.php?option=com_ars&amp;view=update&amp;task=stream&amp;format=xml&amp;id=20&amp;dummy=extension.xml</servers>
   </updateservers>
