@@ -2,12 +2,12 @@
 <extension type="module" version="3" client="site" method="upgrade">
   <name>mod_bxslidary</name>
   <author>Gruz</author>
-  <creationDate>2016-05-22</creationDate>
+  <creationDate>2016-05-24</creationDate>
   <copyright>Copyright (C) 2004-2016 Gruz All rights reserved.</copyright>
   <license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
   <authorEmail>arygroup@gmail.com</authorEmail>
   <authorUrl>http://gruz.org.ua/en/extensions/bxslidary.html</authorUrl>
-  <version>0.0.3</version>
+  <version>0.0.4</version>
   <description>MOD_BXSLIDARY_DESCRIPTION</description>
   <files>
     <folder>css</folder>
@@ -96,8 +96,7 @@
 				<field name="note_description_ajax" type="note" label="MOD_BXSLIDARY_FIELD_AJAX" />
 
 -->
-        <field name="ajax_buttons" type="list" default="disabled" multiple="multiple" label="MOD_BXSLIDARY_FIELD_AJAX" description="MOD_BXSLIDARY_FIELD_AJAX_DESC">
-          <option value="disabled">JDISABLED</option>
+        <field name="ajax_buttons" type="list" default="" multiple="multiple" label="MOD_BXSLIDARY_FIELD_AJAX" description="MOD_BXSLIDARY_FIELD_AJAX_DESC">
           <option value="load_next_reload">MOD_BXSLIDARY_FIELD_AJAX_LOAD_NEXT_X_IMAGES</option>
           <option value="load_next_slides">MOD_BXSLIDARY_FIELD_AJAX_LAST_SLIDE_LOAD</option>
         </field>

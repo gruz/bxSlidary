@@ -49,8 +49,15 @@ class modBXSlidAryHelper {
 		if (isset($s['params']['pager']) && $s['params']['pager'] != 'false' && 	$s['params']['pager'] != '0' ) {
 			$this->pagerIsSet = true;
 		}
-		if ($this->pagerIsSet && $this->maxSlidesIsSet) {
-			JFactory::getApplication()->enqueueMessage(get_class($this).': '.JText::_('MOD_BXSLIDARY_CANNOT_USE_PAGER_AND_MAXSLIDE'), 'error');
+		$this->maxSlidesIsSet = false;
+		if (isset($s['params']['maxSlides']) && $s['params']['maxSlides'] != 'false' && 	$s['params']['maxSlides'] != '0' ) {
+			$this->maxSlidesIsSet = true;
+		}
+		//~ if ($this->pagerIsSet && $this->maxSlidesIsSet) {
+			//~ JFactory::getApplication()->enqueueMessage(get_class($this).': '.JText::_('MOD_BXSLIDARY_CANNOT_USE_PAGER_AND_MAXSLIDE'), 'error');
+		//~ }
+		if ($this->pagerIsSet) {
+			$s['params']['moveSlides'] = 1;
 		}
 		$this->params->set( 'slideshow_params',$s['params'] );
 
@@ -248,17 +255,19 @@ class modBXSlidAryHelper {
 		$helper = new modBXSlidAryHelper($params);
 		$helper->params = $params;
 		$result = $helper->getItems();
+//~ dump ($result,'$result');
 		$items = $result['items'];
 
 		// Add each item an attribute containg a prepared HTML line with image, title and so on
+		$index = 0;
 		foreach ($items as $k=>&$v) {
 			require JModuleHelper::getLayoutPath('mod_bxslidary', $params->get('layout', 'default').'_item');
 			$v->output_slider = implode(PHP_EOL,$item_html);
 			if ($helper->pagerIsSet) {
 				require JModuleHelper::getLayoutPath('mod_bxslidary', $params->get('layout', 'default').'_pager');
-				$v->output_pager = implode(PHP_EOL,$item_pager);
+				$v->output_pager = implode(PHP_EOL,$pager_html);
+				$index++;
 			}
-
 		}
 
 		$ret = array();

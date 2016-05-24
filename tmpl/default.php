@@ -18,9 +18,11 @@ echo '		<ul class="pgbx-bxslider bxslider">'. "\n";
 echo '		</ul>'.PHP_EOL;
 if ($helper->pagerIsSet) {
 	echo '		<div class="pgbx-bx-pager bx-pager">'. "\n";
+		$index = 0;
 		foreach ($items as $k => $v) {
 			require JModuleHelper::getLayoutPath('mod_bxslidary', $params->get('layout', 'default').'_pager');
 			echo implode(PHP_EOL,$pager_html);
+			$index++;
 		}
 	echo '		</div>'.PHP_EOL;
 }

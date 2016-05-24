@@ -9,4 +9,4 @@
 
 defined('_JEXEC') or die;
 $pager_html = array();
-$pager_html[] = '			<a data-slide-index="'.$k.'" href=""><img src="'.$v->pager_image.'" /></a>';
+$pager_html[] = '			<a data-slide-index="'.$index.'" href=""><img src="'.$v->pager_image.'" /></a>';

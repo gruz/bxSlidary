@@ -48,6 +48,10 @@ function pgBXJQModule ($) {
 //~ console.log ('loaded',items);
 					self.removeItems(options.moduleParams.nextload_count_images);
 					$.when( self.appendItems() ).done( function() {
+						$(baseSelector+' .bxslider li img').each(function()  {
+							var title = $(this).attr('data-original-title');
+							$(this).attr('title',title);
+						});
 						options.sliderParams.startSlide = countOfSlides-1;
 //~ console.log('loadNextItems: startSlide',options.sliderParams.startSlide);
 
@@ -222,14 +226,21 @@ function pgBXJQModule ($) {
 		}
 		if (options.moduleParams.ajax_remove_on_append == 1) {
 			$(baseSelector+' .bxslider li').not('.bx-clone').slice(0,num).remove();
+			$(baseSelector+' .bx-pager a').slice(0,num).remove();
 		}
 	}
 
 	this.appendItems = function () {
 //~ console.log ('appendItems',items);
 		if (typeof(items) === 'undefined' ) { return; }
+		var counter = 0;
 		$.each(items, function (index, value) {
+			var pager = $(value.output_pager);
+			pager.attr('data-slide-index',counter);
+			counter++;
+//~ console.log (pager);
 			$(baseSelector +' .bxslider').append(value.output_slider);
+			$(baseSelector +' .bx-pager').append(pager);
 		});
 		return true;
 	}
