@@ -2,12 +2,12 @@
 <extension type="module" version="3" client="site" method="upgrade">
   <name>mod_bxslidary</name>
   <author>Gruz</author>
-  <creationDate>2016-05-24</creationDate>
+  <creationDate>2016-05-25</creationDate>
   <copyright>Copyright (C) 2004-2016 Gruz All rights reserved.</copyright>
   <license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
   <authorEmail>arygroup@gmail.com</authorEmail>
   <authorUrl>http://gruz.org.ua/en/extensions/bxslidary.html</authorUrl>
-  <version>0.0.6</version>
+  <version>0.0.7</version>
   <description>MOD_BXSLIDARY_DESCRIPTION</description>
   <files>
     <folder>css</folder>
@@ -22,6 +22,7 @@
     <filename>helper.php</filename>
     <filename>index.html</filename>
     <filename module="mod_bxslidary">mod_bxslidary.php</filename>
+    <filename>scriptary.php</filename>
     <filename>scriptfile.php</filename>
   </files>
   <config>
