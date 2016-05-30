@@ -63,3 +63,6 @@ ul.bxslider blockquote{
     z-index:10000;
     cursor:pointer;
 }
+.pgbx-bxslider-module  .button {
+	cursor:pointer;
+}
