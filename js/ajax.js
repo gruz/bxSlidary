@@ -69,7 +69,12 @@ function pgBXJQModule ($) {
 //~ console.log ('Load finished',slider);
 							//$('.moduleid_'+options.moduleId+' .bx-controls-direction .bx-next').unbind ('click.loadNextItems');
 							//$('.moduleid_'+options.moduleId+' .bx-controls-direction .bx-next').click(loadNextItems);
-							$('.moduleid_'+options.moduleId+' .bx-controls-direction').append('<i class="fa fa-rotate-right fa-special-css"></i>');
+							if (jQuery.isFunction( el.button )) {
+								var addClass = '';
+							} else {
+								var addClass = 'fa-special-css-bootstrapold';
+							}
+							$('.moduleid_'+options.moduleId+' .bx-controls-direction').append('<i class="fa fa-rotate-right fa-special-css '+addClass+' "></i>');
 							$('.moduleid_'+options.moduleId+' .fa-special-css').click(loadNextItems);
 //alert();
 							//~ setTimeout(
@@ -95,7 +100,13 @@ function pgBXJQModule ($) {
 
 				if (countOfSlides-1 == currentSlide) { // If is last slide
 					options.moduleParams.isLast = true;
-					$('.moduleid_'+options.moduleId+' .bx-controls-direction').append('<i class="fa fa-rotate-right fa-special-css"></i>');
+					if (jQuery.isFunction( el.button )) {
+						var addClass = '';
+					} else {
+						var addClass = 'fa-special-css-bootstrapold';
+					}
+					$('.moduleid_'+options.moduleId+' .bx-controls-direction').append('<i class="fa fa-rotate-right fa-special-css '+addClass+' "></i>');
+
 					$('.moduleid_'+options.moduleId+' .fa-special-css').click(loadNextItems);
 					//$('.moduleid_'+options.moduleId+' .bx-controls-direction .bx-next').click(loadNextItems);
 				}
@@ -226,15 +237,20 @@ function pgBXJQModule ($) {
 		el = $(el);
 		el.css('pointer-events','none');
 		el.css('opacity','0.4');
-		el.button('loading');
+		if (jQuery.isFunction( el.button )) {
+			el.button('loading');
+		}
 
 		return;
 	}
 	this.unBlockElement = function (el) {
+		if (typeof(el) == 'undefined' || el === null) { return; }
 		el = $(el);
 		el.css('pointer-events','auto');
 		el.css('opacity','1');
-		el.button('reset');
+		if (jQuery.isFunction( el.button )) {
+			el.button('reset');
+		}
 
 		return;
 	}

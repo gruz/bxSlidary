@@ -53,6 +53,26 @@ ul.bxslider blockquote{
     border: 1px solid #5280dd;
 }
 
+.fa-special-css-bootstrapold {
+    display: inline-block;
+    font-family: FontAwesome;
+    font-feature-settings: normal;
+    font-kerning: auto;
+    font-language-override: normal;
+    font-size-adjust: none;
+    font-stretch: normal;
+    font-style: normal;
+    font-synthesis: weight style;
+    font-variant: normal;
+    font-weight: normal;
+    line-height: 1;
+    text-rendering: auto;
+}
+.fa-special-css-bootstrapold::before, .fa-special-css-bootstrapold::before {
+	    content:"\f01e";
+}
+
+
 .fa.fa-special-css {
     color: rgba(100, 100, 100, 0.9);
     font-size: 49px;
@@ -66,3 +86,4 @@ ul.bxslider blockquote{
 .pgbx-bxslider-module  .button {
 	cursor:pointer;
 }
+
